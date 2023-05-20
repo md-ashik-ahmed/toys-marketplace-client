@@ -68,8 +68,15 @@ const NavBar = () => {
                 {navItem}
             </ul>
         </div>
-        <div className="navbar-end">
-        {user?. email ? <Link to='/login'><button onClick={handleLogOut} className="btn btn-outline btn-warning">LogOut</button></Link> : <Link to='/login'><button className="btn btn-outline btn-warning">Login</button></Link>}
+         <div className="navbar-end">
+        
+        {user?. email ? <Link to='/login'><>
+            <button onClick={handleLogOut} className="btn btn-outline btn-warning">LogOut</button> <div className="avatar">
+           <div className="mask mask-squircle w-12 h-12">
+           <img src={user?.image} alt="Avatar Tailwind CSS Component" />
+           </div>
+            </div></>
+            </Link> : <Link to='/login'><button className="btn btn-outline btn-warning">Login</button></Link>}
         </div>
     </div>
     );

@@ -1,55 +1,85 @@
+/* eslint-disable react/no-unknown-property */
 
 import { useEffect, useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
 
 const Category = () => {
 
    
-    const [activeTab, setActiveTab] = useState()
-    // const [toys, setToys] = useState()
-    const [tabIndex, setTabIndex] = useState(0);
-    // const [data, setData] = useState()
+    const [activeTab, setActiveTab] = useState("fire")
+    const [toys, setToys] = useState([])
+    
+   
 
     useEffect(() =>{
-        fetch("http://localhost:5000/allToys")
+        fetch(`http://localhost:5000/allToys/${activeTab}`)
         .then((res) => res.json())
         .then((result) =>{
             console.log(result)
-            // setToys(result)
+            setToys(result)
         })
-    },[])
+    },[activeTab])
 
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
       };
 
-      
-        
+     
     
     return (
-<>
-           
-           <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-        
-        <TabList>
+<> 
    
-           <Tab><p className={`${activeTab == 'fire' }`} 
-           onClick={() => handleTabClick("fire")}></p> Mini Fire Truck</Tab>
+     <div className=" bg-sky-300">
+        <div className="">
+          <div className="flex gap-4">
+            <div
+              onClick={() => handleTabClick("fire")}
+              className={` ${
+                activeTab == "fire" ? " bg-red-500 text-black" : "" }`}>
+              <h1>Mini Fire Truck</h1>
+            </div>
+            <div
+              onClick={() => handleTabClick("sports")}
+              className={` border p-2 text-right ${
+                activeTab == "sports" ? " bg-red-500 text-black" : ""}`}>
+              <h1>Sports Car</h1>
+            </div>
+            <div
+              onClick={() => handleTabClick("police")}
+              className={` ${
+                activeTab == "police" ? " bg-red-500 text-black" : ""}`}>
+              <h1>police Car</h1>
+            </div>
+          </div>
+          <div className=' grid md:grid-cols-2 lg:grid-cols-2 gap-6 px-4 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pb-20 '>
+        {toys?.map((toy) =>(
+           <><div >
+            <div>
+            <div className="card w-96 bg-base-100 shadow-xl">
+        <figure className="px-10 pt-10">
+       <img src={toy.picture} alt="Shoes" className="rounded-xl" />
+       </figure>
+       <div className="card-body items-center text-center">
+       <h2 className="card-title">Shoes!</h2>
+      <p>If a dog chews shoes whose shoes does he choose?</p>
+      <div className="card-actions">
+      <button className="btn btn-primary">Buy Now</button>
+      </div>
+      </div>
+     </div>
+    </div>
+       </div></>
+        ))}       
            
-           <Tab><p className={`${activeTab == 'sports' }`} 
-           onClick={() => handleTabClick("sports")}></p> Sports Car</Tab>
-           
-           <Tab><p className={`${activeTab == 'police' }`} 
-           onClick={() => handleTabClick("police")}></p> Mini Police Car</Tab>
-        
-         </TabList>
-        
+    </div>
+        </div>
+ 
+  
+      </div>
 
-         <TabPanel>gagsdgsdagsdgsa</TabPanel>
-         <TabPanel>gagsdgsdagsdgsa</TabPanel>
-       </Tabs>
-               
-           </>
+   
+   
+</>
          
     
     );

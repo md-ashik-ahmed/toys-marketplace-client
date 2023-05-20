@@ -25,10 +25,10 @@ const Register = () => {
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
-    // const image = form.image.value;
+    const image = form.image.value;
     const password = form.password.value;
    
-    console.log(name, email, password, );
+    console.log(name, image, email, password, );
 
     
     if(password.length < 6 ){
@@ -41,7 +41,7 @@ const Register = () => {
     } 
 
     
-    createUser(email, password)
+    createUser(email, image, password)
     .then(result =>{
       const loggedUser = result.user;
       console.log(loggedUser)
@@ -64,7 +64,7 @@ const handleAccepted = event =>{
    <div className="hero-content flex-col ">
     <div className="text-center ">
     </div>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className="card flex-shrink-0 w-full max-w-sm ">
       <form onSubmit={handleRegister}  className="card-body">
         <div className="form-control">
           <label className="label">
@@ -78,12 +78,12 @@ const handleAccepted = event =>{
           </label>
           <input type="email" name='email' placeholder="Your Email" className="input input-bordered" required />
         </div>
-        {/* <div className="form-control">
+        <div className="form-control">
           <label className="label">
             <span className="label-text">Photo URL</span>
           </label>
-          <input type="Photo" name='image' placeholder="Photo URl" className="input input-bordered" required />
-        </div> */}
+          <input type="url" name='image' placeholder="Photo URl" className="input input-bordered" required />
+        </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>

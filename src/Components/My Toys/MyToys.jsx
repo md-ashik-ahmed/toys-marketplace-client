@@ -14,7 +14,7 @@ const MyToys = () => {
     useTitle("MyToys")
 
     useEffect(() =>{
-     fetch(`http://localhost:5000/myToys/${user?.email}`)
+     fetch(`https://toy-marketplace-server-md-ashik-ahmed.vercel.app/myToys/${user?.email}`)
      .then((res) => res.json())
      .then((data) =>{
         console.log(data)
@@ -22,6 +22,27 @@ const MyToys = () => {
 
      })
     },[user])
+
+
+    const handleDelete = id =>{
+      const checked = confirm('Are you sure you want to delete')
+      if(checked){
+        fetch(`http://localhost:5000/myToys/${id}`, {
+          method : 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data =>{
+          console.log(data)
+
+          if(data.deletedCount > 0){
+            alert('deleted successfull')
+
+            const remaining = toys.filter(toy => toy._id !==id)
+            setToys(remaining)
+          }
+        })
+      }
+    }
 
 
     return (
@@ -43,7 +64,11 @@ const MyToys = () => {
     </thead> 
     <tbody>
       {toys?.map((toy, index)=>
-      <MyToy key={index} toy={toy}></MyToy>
+      <MyToy 
+      key={index} 
+      toy={toy}
+      handleDelete={handleDelete}
+      ></MyToy>
       )}
      
     </tbody> 
