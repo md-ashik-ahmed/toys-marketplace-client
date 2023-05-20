@@ -53,18 +53,20 @@ const Category = () => {
         {toys?.map((toy) =>(
            <><div >
             <div>
-            <div className="card w-96 h-full bg-sky-100 shadow">
+            <div className="card w-96 h-full bg-amber-100 shadow" data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000">
         <figure className="px-10 pt-10">
-       <img src={toy.picture} alt="Shoes" className="rounded-xl h-56" />
+       <img src={toy.picture} alt="image" className="rounded h-56" />
        </figure>
        <div className="card-body items-center text-center">
        <h2 className="card-title">{toy.title}</h2>
       <div className='flex'>
-        <p className='mr-36'>{toy.price}</p>
-        <p>{toy.rating}</p>
+        <p className='mr-36'>Price : {toy.price}</p>
+        <p>Rating : {toy.rating}</p>
         </div>
       <div className="card-actions">
-     <Link to={`/details/${toy._id}`}><button className="btn btn-primary px-12">View Details</button></Link>
+     <Link to={`/details/${toy._id}`}><button className="btn btn-worning px-12">View Details</button></Link>
       </div>
       </div>
      </div>

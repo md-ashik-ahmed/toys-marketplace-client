@@ -19,10 +19,9 @@ const AllToy = ({toys}) => {
   </div>
  
 </div>
-</td>
-        <td>{seller}</td> 
+</td>   <td>{name}</td> 
         <td>{category}</td>
-        <td>{name}</td>  
+        <td>{seller}</td> 
         <td>$ {price}</td> 
         <td>{quantity}</td> 
         <Link to={`/details/${_id}`}><td>Details</td></Link>

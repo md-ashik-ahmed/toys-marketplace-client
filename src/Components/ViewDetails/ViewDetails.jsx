@@ -5,7 +5,7 @@ const ViewDetails = () => {
  
     const data = useLoaderData()
 
-    const {picture, title, price, name, rating} = data
+    const {picture,description, title, price, name, rating} = data
 
     return (
         <div className="container">
@@ -13,9 +13,10 @@ const ViewDetails = () => {
      <figure><img src={picture} alt="Movie"/></figure>
      <div className="card-body">
     <h2 className="card-title">{title}</h2>
-    <p>{price}</p>
+    <p>{description}</p>
+    <p>Price : {price}</p>
     <p>{name}</p>
-    <p>{rating}</p>
+    <p>Rating : {rating}</p>
     
   </div>
 </div>

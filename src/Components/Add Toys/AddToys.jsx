@@ -27,7 +27,9 @@ const AddToys = () => {
 
 
     return (
-        <div className="hero min-h-1/2 bg-sky-100 py-10 container rounded mb-12">
+        <div className="hero min-h-1/2 bg-sky-100 py-10 container rounded mb-12" data-aos="zoom-in"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="1000">
             <div className="bg-sky-100">
             <form onSubmit={handleSubmit(onSubmit)}>
             {errors.exampleRequired && <span>This field is required</span>}
