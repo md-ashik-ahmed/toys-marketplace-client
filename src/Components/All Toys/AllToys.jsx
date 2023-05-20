@@ -55,7 +55,7 @@ const handleSearch = () => {
         <th>Toy Name</th> 
         <th>Price</th> 
         <th>Quantity</th> 
-        <th>Favorite Color</th>
+        <th>button</th>
       </tr>
     </thead> 
     <tbody>

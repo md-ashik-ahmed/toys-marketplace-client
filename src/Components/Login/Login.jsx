@@ -74,39 +74,44 @@ const Login = () => {
 
     return (
     <>
-    <div className="min-h-screen bg-base-200">
-    <div className="hero-content flex-col lg:flex-row-reverse">
-    <div className="text-center lg:text-left">
+    <div className="min-h-screen">
+    <div className="hero-content">
+    <div className="text-center ">
     </div>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className='grid lg:grid-cols-2 container bg-red-200'> 
+      <div> <img src="https://i.ibb.co/j8TkHJb/app.png" alt="" /> </div>
+      <div className="card flex-shrink-0 w-full max-w-sm bg-sky-200">
+        
+       
+
       <form onSubmit={handleLogin} className="card-body">
-        <div className="form-control">
+            <div className='text-center'> <h1 className='text-4xl font-semibold py-2'>Login !</h1></div>
+
+        <div className="form-control mb-6">
          
-          <input type="email" name='email' placeholder="email" className="input input-bordered" required />
-        </div>
-        <div className="form-control">
+          <input type="email" name='email' placeholder="Enter Your Email" className="input input-bordered" required />
+        </div> 
+        <div className="form-control"> 
          
-          <input type="password" name="password" placeholder="password" className="input input-bordered" required/>
+          <input type="password" name="password" placeholder="Enter Your Password" className="input input-bordered" required/>
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
         </div>
-        <div className="form-control">
-      <label className="label cursor-pointer">
-       <span className="label-text">Remember me</span> 
-      <input type="checkbox" className="checkbox" />
-     </label>
-       </div>
        <p className='text-red-600'></p>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn ">Login</button>
         </div>
       <div className='flex'> <p>Dont have an account?</p> 
       <p>{error}</p>
-      <Link to='/register'> <p className='text-blue-600'>Please Register</p> 
+      <Link to='/register'> <p className='text-blue-600 text-xl'>Register</p> 
       </Link></div>
-      <div><button onClick={handleGoogleSignIn} className='btn btn-outline'>SignIn with Google</button></div>
+
+
+      <div className='text-center'><button onClick={handleGoogleSignIn} className='btn btn-outline'>SignIn with Google</button></div>
+
       </form>
+    </div>
     </div>
   </div>
   <ToastContainer/>

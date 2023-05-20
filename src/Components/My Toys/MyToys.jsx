@@ -25,26 +25,18 @@ const MyToys = () => {
 
 
     const handleDelete = id =>{
-      const checked =  
+      const checked = confirm &&
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         icon: 'warning',
-        showCancelButton: true,
+        
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
-        }
       })
       if(checked){
-        fetch(`http://localhost:5000/myToys/${id}`, {
+        fetch(`https://toy-marketplace-server-md-ashik-ahmed.vercel.app/myToys/${id}`, {
           method : 'DELETE'
         })
         .then(res => res.json())
@@ -52,7 +44,14 @@ const MyToys = () => {
           console.log(data)
 
           if(data.deletedCount > 0){
-           
+           alert && Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success')
+                
+              
+          
+        
 
             const remaining = toys.filter(toy => toy._id !==id)
             setToys(remaining)
@@ -68,15 +67,14 @@ const MyToys = () => {
   <table className="table table-compact w-full">
     <thead>
       <tr>
-        <th>No</th> 
+        <th>Edit</th> 
         <th>Image</th> 
         <th>Seller Name</th> 
         <th>Category</th> 
         <th>Toy Name</th> 
         <th>Price</th> 
         <th>Quantity</th> 
-        <th></th>
-        <th></th>
+        <th>Delete</th>
       </tr>
     </thead> 
     <tbody>

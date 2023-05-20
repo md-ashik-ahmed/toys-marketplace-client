@@ -15,6 +15,8 @@ import AddToys from './Components/Add Toys/AddToys';
 import MyToys from './Components/My Toys/MyToys';
 import AllToys from './Components/All Toys/AllToys';
 import AuthProvider from './Components/Provider/AuthProvider';
+import ViewDetails from './Components/ViewDetails/ViewDetails';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -51,6 +53,11 @@ const router = createBrowserRouter([
       {
         path : "/register",
         element : <Register></Register>
+      },
+      {
+        path : "/details/:id",
+        element : <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+        loader : ({params}) => fetch(`https://toy-marketplace-server-md-ashik-ahmed.vercel.app/marketplace/${params.id}`)
       }
     ]
   },

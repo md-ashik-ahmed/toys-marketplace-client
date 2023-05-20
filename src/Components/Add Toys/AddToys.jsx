@@ -9,8 +9,8 @@ const AddToys = () => {
     useTitle("AddToys")
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = data => {
-      fetch("http://localhost:5000/postToys", {
+    const onSubmit = (data, event) => {
+      fetch("https://toy-marketplace-server-md-ashik-ahmed.vercel.app/postToys", {
       method : "POST",
       headers : {'Content-Type' : 'application/json'},
       body : JSON.stringify(data)
@@ -18,6 +18,9 @@ const AddToys = () => {
     .then((res) => res.json())
     .then((result) =>{
       console.log(result)
+
+      event.target.reset()
+
     })
     console.log(data)
     };
@@ -34,7 +37,7 @@ const AddToys = () => {
               className="form-control p-2"
               {...register("seller")}
               placeholder="Seller Name"
-              defaultValue="Ashik Mahmud"
+              
             />
            </div>
            <div>
@@ -42,7 +45,7 @@ const AddToys = () => {
               className="form-control p-2"
               {...register("name")}
               placeholder="Toy Name"
-              defaultValue=""
+              
             />
            </div>
 
@@ -51,7 +54,7 @@ const AddToys = () => {
               className="form-control p-2"
               {...register("quantity", { required: true })}
               placeholder="Quantity"
-              defaultValue="30"
+              
             />
             </div>
 
@@ -77,7 +80,7 @@ const AddToys = () => {
               {...register("picture")}
               placeholder="image link"
               type="url"
-              defaultValue="https://images.pexels.com/photos/2528118/pexels-photo-2528118.jpeg?auto=compress&cs=tinysrgb&w=600"
+              
             />
             </div>
             <input
@@ -104,7 +107,7 @@ const AddToys = () => {
             </div>
            </div>
             <div className="text-center mt-6">
-            <input className="btn px-12 py-2 btn-outline" value="Post Job" type="submit" />
+            <input className="btn px-12 py-2 btn-outline" value="Add Toys" type="submit" />
             </div>
           </form>
         </div>

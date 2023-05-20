@@ -1,54 +1,59 @@
 /* eslint-disable react/no-unknown-property */
 
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Category = () => {
 
-    const [activeTab, setActiveTab] = useState("fire")
+    const [active, setActive] = useState("fire")
     const [toys, setToys] = useState([])
     
     useEffect(() =>{
-        fetch(`http://localhost:5000/allToys/${activeTab}`)
+        fetch(`https://toy-marketplace-server-md-ashik-ahmed.vercel.app/allToys/${active}`)
         .then((res) => res.json())
         .then((result) =>{
             console.log(result)
             setToys(result)
         })
-    },[activeTab])
+    },[active])
 
     const handleTabClick = (tabName) => {
-        setActiveTab(tabName);
+        setActive(tabName);
       };
 
     return (
     <> 
      <div className="">
-        <div className=" bg-blue-100">
-          <div className="flex text-center gap-4">
-            <div
+        <div className="mx-auto">
+         <div className='text-center py-8'> <h1 className='text-3xl'>Shop by category</h1></div>
+         <div className='text-center'>
+          <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-8  flex lg:ml-96">
+            <p
               onClick={() => handleTabClick("fire")}
-              className={` ${
-                activeTab == "fire" ? " bg-red-500 text-black" : "" }`}>
-              <h1>Mini Fire Truck</h1>
-            </div>
-            <div
+              className={` border py-2 px-6${
+                active == "fire" ? " bg-sky-100 text-black" : "" }`}>
+              <h1 className='font-semibold'>Mini Fire Truck</h1>
+            </p>
+            <p
               onClick={() => handleTabClick("sports")}
-              className={` border p-2 text-right ${
-                activeTab == "sports" ? " bg-red-500 text-black" : ""}`}>
-              <h1>Sports Car</h1>
-            </div>
-            <div
+              className={` border py-2 px-6 ${
+                active == "sports" ? " bg-sky-100 text-black" : ""}`}>
+              <h1 className='font-semibold'>Sports Car</h1>
+            </p>
+            <p
               onClick={() => handleTabClick("police")}
-              className={` ${
-                activeTab == "police" ? " bg-red-500 text-black" : ""}`}>
-              <h1>police Car</h1>
-            </div>
+              className={`border px-6 py-2 ${
+                active == "police" ? " bg-sky-100 text-black" : ""}`}>
+              <h1 className='font-semibold'>Police Car</h1>
+            </p>
           </div>
+         </div>
           <div className=' grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pb-20 '>
         {toys?.map((toy) =>(
            <><div >
             <div>
-            <div className="card w-96 h-full bg-base-100 shadow-xl">
+            <div className="card w-96 h-full bg-sky-100 shadow">
         <figure className="px-10 pt-10">
        <img src={toy.picture} alt="Shoes" className="rounded-xl h-56" />
        </figure>
@@ -59,7 +64,7 @@ const Category = () => {
         <p>{toy.rating}</p>
         </div>
       <div className="card-actions">
-      <button className="btn btn-primary px-12">Buy Now</button>
+     <Link to={`/details/${toy._id}`}><button className="btn btn-primary px-12">View Details</button></Link>
       </div>
       </div>
      </div>
