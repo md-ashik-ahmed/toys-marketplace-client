@@ -2,15 +2,11 @@
 
 import { useEffect, useState } from 'react';
 
-
 const Category = () => {
 
-   
     const [activeTab, setActiveTab] = useState("fire")
     const [toys, setToys] = useState([])
     
-   
-
     useEffect(() =>{
         fetch(`http://localhost:5000/allToys/${activeTab}`)
         .then((res) => res.json())
@@ -24,14 +20,11 @@ const Category = () => {
         setActiveTab(tabName);
       };
 
-     
-    
     return (
-<> 
-   
-     <div className=" bg-sky-300">
-        <div className="">
-          <div className="flex gap-4">
+    <> 
+     <div className="">
+        <div className=" bg-blue-100">
+          <div className="flex text-center gap-4">
             <div
               onClick={() => handleTabClick("fire")}
               className={` ${
@@ -51,13 +44,13 @@ const Category = () => {
               <h1>police Car</h1>
             </div>
           </div>
-          <div className=' grid md:grid-cols-2 lg:grid-cols-2 gap-6 px-4 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pb-20 '>
+          <div className=' grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 pb-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pb-20 '>
         {toys?.map((toy) =>(
            <><div >
             <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 h-full bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
-       <img src={toy.picture} alt="Shoes" className="rounded-xl" />
+       <img src={toy.picture} alt="Shoes" className="rounded-xl h-56" />
        </figure>
        <div className="card-body items-center text-center">
        <h2 className="card-title">Shoes!</h2>
@@ -73,15 +66,8 @@ const Category = () => {
            
     </div>
         </div>
- 
-  
       </div>
-
-   
-   
 </>
-         
-    
     );
 };
 
