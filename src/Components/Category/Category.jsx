@@ -53,10 +53,13 @@ const Category = () => {
        <img src={toy.picture} alt="Shoes" className="rounded-xl h-56" />
        </figure>
        <div className="card-body items-center text-center">
-       <h2 className="card-title">Shoes!</h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
+       <h2 className="card-title">{toy.title}</h2>
+      <div className='flex'>
+        <p className='mr-36'>{toy.price}</p>
+        <p>{toy.rating}</p>
+        </div>
       <div className="card-actions">
-      <button className="btn btn-primary">Buy Now</button>
+      <button className="btn btn-primary px-12">Buy Now</button>
       </div>
       </div>
      </div>

@@ -13,8 +13,7 @@ const Register = () => {
     useTitle("Register")
     
   const [error, setError] = useState('');
-  const [accepted, setAccepted] = useState(false);
- 
+  
   const navigate = useNavigate();
   
   const handleRegister = event =>{
@@ -54,10 +53,6 @@ const Register = () => {
     
   }
 
-const handleAccepted = event =>{
-  setAccepted(event.target.checked)
-}
-
     return (
         <div>
              <div className="min-h-screen bg-base-200">
@@ -88,18 +83,11 @@ const handleAccepted = event =>{
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" name="password" placeholder="password" className="input input-bordered" required/>
+          <input type="password" name="password" placeholder="Password" className="input input-bordered" required/>
         </div>
         
-        <div className="form-control">
-      <label className="label cursor-pointer">
-      <input onClick={handleAccepted} type="checkbox"  className="checkbox" />
-       <span className="label-text">I accept <span className='text-blue-700'>Terms and Conditions</span> </span> 
-      
-     </label>
-       </div>
         <div className="form-control mt-6">
-          <button disabled={!accepted} className="btn btn-primary btn-outline">Create New account</button>
+          <button className="btn btn-primary btn-outline">Create New account</button>
         </div>
         <div className='text-center gap-4'>
         <small>Already have an account?<Link to='/login'> <span className='text-blue-600'>Login</span> </Link></small>
