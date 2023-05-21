@@ -1,16 +1,90 @@
-import { useContext} from "react";
-import { useForm } from "react-hook-form";
-import { AuthContext } from "../Provider/AuthProvider";
+// import { useContext} from "react";
+// import { useForm } from "react-hook-form";
+// import { AuthContext } from "../Provider/AuthProvider";
 
 
-const UpdateToy = ({toy}) => {
-  console.log(toy)
-  const {user} = useContext(AuthContext)
-  // const [control, setControl] = useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+// import React from 'react';
 
-  const handleUpdate = (data) => {
-    console.log(data);
+// const UpdateToy = () => {
+
+
+//   const [showModal, setShowModal] = React.useState(false);
+
+
+//   return (
+//     <div>
+//       <>
+      
+//       {showModal ? (
+//         <>
+//           <div
+//             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+//           >
+//             <div className="relative w-auto my-6 mx-auto max-w-3xl">
+//               {/*content*/}
+//               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+//                 {/*header*/}
+//                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+//                   <h3 className="text-3xl font-semibold">
+//                     Modal Title
+//                   </h3>
+//                   <button
+//                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+//                     onClick={() => setShowModal(false)}
+//                   >
+//                     <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+//                       ×
+//                     </span>
+//                   </button>
+//                 </div>
+//                 {/*body*/}
+//                 <div className="relative p-6 flex-auto">
+//                   <p className="my-4 text-slate-500 text-lg leading-relaxed">
+//                     I always felt like I could do anything. That’s the main
+//                     thing people are controlled by! Thoughts- their perception
+//                     of themselves! Thee slowed down by their perception of
+//                     themselves. If ye taught you can’t do anything, you
+//                     won’t do anything. I was taught I could do everything.
+//                   </p>
+//                 </div>
+//                 {/*footer*/}
+//                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+//                   <button
+//                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+//                     type="button"
+//                     onClick={() => setShowModal(false)}
+//                   >
+//                     Close
+//                   </button>
+//                   <button
+//                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+//                     type="button"
+//                     onClick={() => setShowModal(false)}
+//                   >
+//                     Save Changes
+//                   </button>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+//         </>
+//       ) : null}
+//     </>
+//     </div>
+//   );
+// };
+
+// export default UpdateToy;
+  
+    
+  // console.log(toy)
+  // const {user} = useContext(AuthContext)
+  
+  // const { register, handleSubmit, formState: { errors } } = useForm();
+
+  // const handleUpdate = (data) => {
+  //   console.log(data);
     // fetch(`http://localhost:5000/updateToy/${data._id}`, {
     //   method: "PUT",
     //   headers: { "Content-Type": "application/json" },
@@ -23,13 +97,13 @@ const UpdateToy = ({toy}) => {
     //     }
     //     console.log(result);
     //   });
-  };
+  
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit(handleUpdate)}>
-            {errors.exampleRequired && <span>This field is required</span>}
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 container">
+  
+    // <div>
+    //   <form onSubmit={handleSubmit(handleUpdate)}>
+    //         {errors.exampleRequired && <span>This field is required</span>}
+    //        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 container">
            {/* <div>
            <input
               className="form-control p-2"
@@ -45,26 +119,26 @@ const UpdateToy = ({toy}) => {
               placeholder="Toy Name"
               type = 'text'
             />
-           </div> */}
+           </div> */
 
-           <div>
-           <input
-            className="text-input"
-            {...register("_id")}
-            value={toy?._id}
-          />
-           </div>
+          //  <div>
+          //  <input
+          //   className="text-input"
+          //   {...register("_id")}
+          //   value={toy?._id}
+          // />
+        
 
-            <div>
-            <input
-              className="form-control p-2"
-              {...register("quantity", { required: true })}
-              placeholder="Quantity"
+            // <div>
+            // <input
+            //   className="form-control p-2"
+            //   {...register("quantity", { required: true })}
+            //   placeholder="Quantity"
               
-            />
-            </div>
+            // />
+            // </div>
 
-           {/* <div>
+           /* <div>
            <input
               className="form-control p-2"
               {...register("rating", { required: true })}
@@ -90,38 +164,5 @@ const UpdateToy = ({toy}) => {
               
             />
             </div> */}
-            <div><input
-              className="form-control p-2"
-              {...register("price")}
-              placeholder="Price"
-              type="number"
-              defaultValue={toy?.price}
-            /></div>
-            <div>
-            <input
-              className="form-control p-2"
-              value={user?.email}
-              {...register("email")}
-              placeholder="Your email"
-              type="email"
-            />
-            </div>
-            <div>
-            <input
-              className=" p-2"
-              {...register("description")}
-              placeholder="Description"
-              type = 'text'
-              defaultValue={toy?.description}
-            />
-            </div>
-           </div>
-            <div className="text-center mt-6">
-            <input className="btn px-12 py-2 btn-outline" value="Add Toys" type="submit" />
-            </div>
-          </form>
-    </div>
-  );
-};
+           
 
-export default UpdateToy;
