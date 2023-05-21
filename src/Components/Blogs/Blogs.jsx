@@ -5,7 +5,7 @@ const Blogs = () => {
     return (
         <div className='container'>
             <div>
-                <h1 className='font-sans text-2xl font-semibold'>1. What is an access token and refresh token? How do they work and where should we store them on the client-side?</h1> <br />
+                <h1 className='font-sans text-2xl font-semibold' data-aos="fade-down">1. What is an access token and refresh token? How do they work and where should we store them on the client-side?</h1> <br />
                 <h3 className='text-xl'> <span className='font-semibold'>Answer:</span> Access Token: A piece of information a client uses to gain access to a server's secured resources. It has a finite lifespan and contains data about the authorizations and identity of the client. <br /> <br />
 
                 Refresh Token: A persistent credential that is used to request a fresh access token once the old one expires. The client is able to extend their session without having to re-authenticate. <br /> <br />

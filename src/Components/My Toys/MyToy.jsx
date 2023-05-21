@@ -1,12 +1,19 @@
 
+import { Link } from "react-router-dom";
+
+
 const MyToy = ({toy, handleDelete}) => {
  
   const {_id, seller, category, price, quantity, name, picture} = toy
 
+
+ 
+
+
   return (
     <>
       <tr>
-        <th>Edit</th> 
+        <Link to={`/update/${_id}`}><td>Edit</td></Link>
         <td>
          <div className="flex items-center space-x-3">
         <div className="avatar">
@@ -26,7 +33,7 @@ const MyToy = ({toy, handleDelete}) => {
         </button></td>
         
       </tr>
-    
+    {/* <div className=""><UpdateToy toy = {toy}></UpdateToy></div> */}
     </>
   );
 };

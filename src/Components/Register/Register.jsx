@@ -1,4 +1,4 @@
-import {  useContext, useState } from 'react';
+import {  useContext } from 'react';
 import { Link, useNavigate, } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,13 +12,13 @@ const Register = () => {
 
     useTitle("Register")
     
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
   
   const navigate = useNavigate();
   
   const handleRegister = event =>{
     event.preventDefault();
-    setError('');
+    
     
 
     const form = event.target;
@@ -31,19 +31,22 @@ const Register = () => {
 
     
     if(password.length < 6 ){
-      setError && toast.error('Password must be 6 character')
+      toast.error('Password must be 6 character')
       return
     }
     else if(!/(?=(.*[A-Z]){2,})/.test(password)){
-      setError && toast.error("At least Two Uper Case!")
+      toast.error("At least Two Uper Case!")
       return
     } 
 
     
     createUser(email, image, password)
+    
     .then(result =>{
       const loggedUser = result.user;
+      
       console.log(loggedUser)
+      toast.success("User Created Successfully!")
       navigate('/')
       form.reset();
     })
@@ -61,9 +64,9 @@ const Register = () => {
     </div>
    <div className='grid lg:grid-cols-2 container bg-orange-200'> 
    
-    <div> <img src="https://i.ibb.co/j8TkHJb/app.png" alt="" /> </div>
+    <div data-aos="zoom-in-down"> <img src="https://i.ibb.co/j8TkHJb/app.png" alt="" /> </div>
   
-   <div className="card flex-shrink-0 w-full max-w-sm bg-sky-200">
+   <div className="card flex-shrink-0 w-full max-w-sm bg-sky-200" data-aos="zoom-in-up">
       <form onSubmit={handleRegister}  className="card-body">
         <div className="form-control">
           <label className="label">
@@ -96,7 +99,6 @@ const Register = () => {
         <div className='text-center gap-4'>
         <small>Already have an account?<Link to='/login'> <span className='text-blue-600'>Login</span> </Link></small>
         </div>
-        <p className='text-red-600'>{error}</p>
       </form>
     </div>
    </div>

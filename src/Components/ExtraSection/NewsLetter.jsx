@@ -2,7 +2,7 @@
 
 const NewsLetter = () => {
     return (
-        <div className="text-center bg-cyan-500 rounded-lg">
+        <div className="text-center bg-cyan-500 rounded-lg" data-aos="fade-right">
            <div className="py-8">
             <h1 className="text-3xl text-white">Subscribe to our newsletter</h1>
             <h4 className="text-white text-xl pb-6">Promotions, new products and sales. Directly to your inbox.</h4>

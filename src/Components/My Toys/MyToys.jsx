@@ -5,11 +5,11 @@ import useTitle from "../hooks/useTitle";
 import Swal from 'sweetalert2';
 
 
-
 const MyToys = () => {
 
     const {user} = useContext(AuthContext)
     const [toys, setToys] = useState([])
+  
     useTitle("MyToys")
 
     useEffect(() =>{
@@ -22,6 +22,8 @@ const MyToys = () => {
      })
     },[user])
 
+
+    
 
     const handleDelete = id =>{
       console.log(confirm)
@@ -82,11 +84,20 @@ const MyToys = () => {
       toy={toy}
       handleDelete={handleDelete}
       ></MyToy>
+      
       )}
      
     </tbody> 
    
   </table>
+  {/* <div className="container bg-sky-400">
+  {toys?.map((toy)=> 
+   <UpdateToy key= {toy._id} 
+   toy = {toy}
+  
+   >
+  </UpdateToy>)}
+  </div> */}
 </div>
   
 

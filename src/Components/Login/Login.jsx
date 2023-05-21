@@ -79,12 +79,12 @@ const Login = () => {
     <div className="text-center ">
     </div>
     <div className='grid lg:grid-cols-2 container bg-red-200'> 
-      <div> <img src="https://i.ibb.co/j8TkHJb/app.png" alt="" /> </div>
+      <div data-aos="flip-left"> <img src="https://i.ibb.co/j8TkHJb/app.png" alt="" /> </div>
       <div className="card flex-shrink-0 w-full max-w-sm bg-sky-200">
         
        
 
-      <form onSubmit={handleLogin} className="card-body">
+      <form onSubmit={handleLogin} className="card-body" data-aos="flip-right">
             <div className='text-center'> <h1 className='text-4xl font-semibold py-2'>Login !</h1></div>
 
         <div className="form-control mb-6">
