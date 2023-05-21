@@ -55,11 +55,15 @@ const Register = () => {
 
     return (
         <div>
-             <div className="min-h-screen bg-base-200">
+             <div className="min-h-screen">
    <div className="hero-content flex-col ">
     <div className="text-center ">
     </div>
-    <div className="card flex-shrink-0 w-full max-w-sm bg-sky-200">
+   <div className='grid lg:grid-cols-2 container bg-orange-200'> 
+   
+    <div> <img src="https://i.ibb.co/j8TkHJb/app.png" alt="" /> </div>
+  
+   <div className="card flex-shrink-0 w-full max-w-sm bg-sky-200">
       <form onSubmit={handleRegister}  className="card-body">
         <div className="form-control">
           <label className="label">
@@ -87,7 +91,7 @@ const Register = () => {
         </div>
         
         <div className="form-control mt-6">
-          <button className="btn btn-primary btn-outline">Create New account</button>
+          <button className="btn btn-primary btn-outline">Register</button>
         </div>
         <div className='text-center gap-4'>
         <small>Already have an account?<Link to='/login'> <span className='text-blue-600'>Login</span> </Link></small>
@@ -95,6 +99,7 @@ const Register = () => {
         <p className='text-red-600'>{error}</p>
       </form>
     </div>
+   </div>
   </div>
  </div>
   <ToastContainer/>
