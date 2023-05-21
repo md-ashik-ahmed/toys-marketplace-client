@@ -29,18 +29,20 @@ const Category = () => {
          <div className='text-center py-8'> <h1 className='text-3xl'>Shop by category</h1></div>
          <div className='text-center'>
           <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-8  flex lg:ml-96">
+          <p
+              onClick={() => handleTabClick("sports")}
+              className={` border py-2 px-6 ${
+                active == "sports" ? " bg-sky-100 text-black" : ""}`}>
+              <h1 className='font-semibold'>Sports Car</h1>
+            </p>
+            
             <p
               onClick={() => handleTabClick("fire")}
               className={` border py-2 px-6${
                 active == "fire" ? " bg-sky-100 text-black" : "" }`}>
               <h1 className='font-semibold'>Mini Fire Truck</h1>
             </p>
-            <p
-              onClick={() => handleTabClick("sports")}
-              className={` border py-2 px-6 ${
-                active == "sports" ? " bg-sky-100 text-black" : ""}`}>
-              <h1 className='font-semibold'>Sports Car</h1>
-            </p>
+            
             <p
               onClick={() => handleTabClick("police")}
               className={`border px-6 py-2 ${

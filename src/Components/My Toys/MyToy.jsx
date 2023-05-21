@@ -1,8 +1,8 @@
 
 const MyToy = ({toy, handleDelete}) => {
-   
+ 
   const {_id, seller, category, price, quantity, name, picture} = toy
-  
+
   return (
     <>
       <tr>

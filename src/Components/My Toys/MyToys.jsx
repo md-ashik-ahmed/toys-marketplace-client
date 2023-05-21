@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import MyToy from "./MyToy";
 import useTitle from "../hooks/useTitle";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 
 
@@ -10,7 +10,6 @@ const MyToys = () => {
 
     const {user} = useContext(AuthContext)
     const [toys, setToys] = useState([])
-
     useTitle("MyToys")
 
     useEffect(() =>{
@@ -25,7 +24,8 @@ const MyToys = () => {
 
 
     const handleDelete = id =>{
-      const checked = confirm &&
+      console.log(confirm)
+       confirm &&
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -34,30 +34,28 @@ const MyToys = () => {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
+      }).then(result => {
+        if(result.isConfirmed){
+          fetch(`https://toy-marketplace-server-md-ashik-ahmed.vercel.app/myToys/${id}`, {
+            method : 'DELETE'
+          })
+          .then(res => res.json())
+          .then(data =>{
+            console.log(data)
+  
+            if(data.deletedCount > 0){
+             alert && Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success')
+                  
+              const remaining = toys.filter(toy => toy._id !==id)
+              setToys(remaining)
+            }
+          })
+        }
       })
-      if(checked){
-        fetch(`https://toy-marketplace-server-md-ashik-ahmed.vercel.app/myToys/${id}`, {
-          method : 'DELETE'
-        })
-        .then(res => res.json())
-        .then(data =>{
-          console.log(data)
-
-          if(data.deletedCount > 0){
-           alert && Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success')
-                
-              
-          
-        
-
-            const remaining = toys.filter(toy => toy._id !==id)
-            setToys(remaining)
-          }
-        })
-      }
+       
     }
 
 

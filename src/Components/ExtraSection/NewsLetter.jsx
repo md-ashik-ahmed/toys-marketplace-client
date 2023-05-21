@@ -2,11 +2,16 @@
 
 const NewsLetter = () => {
     return (
-        <div className="text-center bg-cyan-500 ">
+        <div className="text-center bg-cyan-500 rounded-lg">
            <div className="py-8">
-            <h1 className="text-2xl text-white">Subscribe to our newsletter</h1>
-            <h4 className="text-white pb-6">Promotions, new products and sales. Directly to your inbox.</h4>
-            <input className="p-2" type="text" />
+            <h1 className="text-3xl text-white">Subscribe to our newsletter</h1>
+            <h4 className="text-white text-xl pb-6">Promotions, new products and sales. Directly to your inbox.</h4>
+            <div className="flex">
+    <input type="text" placeholder="Type Your Email" className="w-1/3 lg:ml-96 px-3" />
+    <button className="btn px-6">
+      Subcribe
+    </button>
+  </div>
             </div> 
         </div>
     );

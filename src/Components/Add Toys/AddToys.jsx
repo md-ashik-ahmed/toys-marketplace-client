@@ -47,7 +47,7 @@ const AddToys = () => {
               className="form-control p-2"
               {...register("name")}
               placeholder="Toy Name"
-              
+              type = 'text'
             />
            </div>
 
@@ -80,7 +80,7 @@ const AddToys = () => {
             <input
               className="form-control p-2"
               {...register("picture")}
-              placeholder="image link"
+              placeholder="Image link"
               type="url"
               
             />
@@ -88,7 +88,7 @@ const AddToys = () => {
             <input
               className="form-control p-2"
               {...register("price")}
-              placeholder="price"
+              placeholder="Price"
               type="number"
             />
             <div>
@@ -96,15 +96,16 @@ const AddToys = () => {
               className="form-control p-2"
               value={user?.email}
               {...register("email")}
-              placeholder="your email"
+              placeholder="Your email"
               type="email"
             />
             </div>
             <div>
             <input
-              className=" w-full p-2"
+              className=" p-2"
               {...register("description")}
-              placeholder="description"
+              placeholder="Description"
+              type = 'text'
             />
             </div>
            </div>

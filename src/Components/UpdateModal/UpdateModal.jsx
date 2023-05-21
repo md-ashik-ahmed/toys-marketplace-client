@@ -1,21 +1,16 @@
 
-const UpdateModal = () => {
-    return (
-        <div>
-        
-<label htmlFor="my-modal-3" className="btn">open modal</label>
-
-{/* Put this part before </body> tag */}
-<input type="checkbox" id="my-modal-3" className="modal-toggle" />
-<div className="modal">
-  <div className="modal-box relative">
-    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 className="text-lg font-bold">Congratulations random Internet user!</h3>
-    <p className="py-4">been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-  </div>
-</div>  
-        </div>
-    );
+const UpdateModal = ({toy, handleupdate}) => {
+  
+  const {title} = toy
+  return (
+    <>
+      <form onSubmit={handleupdate}>
+        <>
+        <h1>{title}</h1>
+        </>
+      </form>
+    </>
+  );
 };
-
-export default UpdateModal;
+ 
+export default UpdateModal
