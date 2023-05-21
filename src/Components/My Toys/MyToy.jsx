@@ -6,16 +6,32 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../Provider/AuthProvider";
 
 
-const MyToy = ({toy, handleDelete}) => {
+const MyToy = ({toy, handleDelete, handleUpdate}) => {
 
   console.log(toy)
 
  const {user} = useContext(AuthContext)
-  const {_id, seller, category, price, quantity, name, picture} = toy
+  const {_id, seller, category, price, quantity, name, picture} = toy || []
   const [showModal, setShowModal] = React.useState(false);
-
+  
 
   const { register, handleSubmit, formState: { errors } } = useForm();
+
+  // const handleUpdate = (data) =>{
+  //   console.log(data)
+  //   fetch(`http://localhost:5000/updateToy/${data._id}`, {
+  //     method: "PUT",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       if (result.modifiedCount > 0) {
+  //         setControl(!control);
+  //       }
+  //       console.log(result);
+  //     });
+  // }
 
   return (
     <>
@@ -56,7 +72,7 @@ const MyToy = ({toy, handleDelete}) => {
 
 
 
-                <form onSubmit={handleSubmit()}>
+                <form onSubmit={handleSubmit(handleUpdate)}>
             {errors.exampleRequired && <span>This field is required</span>}
            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
            <div>
@@ -67,12 +83,23 @@ const MyToy = ({toy, handleDelete}) => {
             
             />
            </div>
+
+            <div>
+            <input
+            className="text-input hidden"
+            {...register("_id")}
+            value={_id}
+          />
+            </div>
+
            <div>
            <input
               className="form-control p-2"
               {...register("name")}
               placeholder="Toy Name"
               type = 'text'
+              defaultValue={name}
+
             />
            </div>
 
@@ -87,14 +114,16 @@ const MyToy = ({toy, handleDelete}) => {
             />
             </div>
 
-           <div>
+           {/* <div>
            <input
               className="form-control p-2"
               {...register("rating", { required: true })}
               placeholder="Rating"
               type="number"
+              defaultValue={rating}
+
             />
-           </div>
+           </div> */}
             <div>
             <select className="form-control p-2" {...register("category")}>
               <option value="Sports Car">Sports Car</option>
@@ -117,6 +146,7 @@ const MyToy = ({toy, handleDelete}) => {
               {...register("price")}
               placeholder="Price"
               type="number"
+              defaultValue={price}
             />
             <div>
             <input
