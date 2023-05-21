@@ -5,7 +5,6 @@ import useTitle from "../hooks/useTitle";
 import Swal from 'sweetalert2';
 
 
-
 const MyToys = () => {
 
     const {user} = useContext(AuthContext)
@@ -24,10 +23,9 @@ const MyToys = () => {
     },[user, control])
 
 
-
     const handleUpdate = (data) =>{
       console.log(data)
-      fetch(`http://localhost:5000/updateToy/${data._id}`, {
+      fetch(`https://toy-marketplace-server-md-ashik-ahmed.vercel.app/updateToy/${data._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -42,8 +40,6 @@ const MyToys = () => {
     }
 
 
-    
-
     const handleDelete = id =>{
       console.log(confirm)
        confirm &&
@@ -51,7 +47,6 @@ const MyToys = () => {
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         icon: 'warning',
-        
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
@@ -75,14 +70,16 @@ const MyToys = () => {
             }
           })
         }
-      })
-       
+      }) 
     }
-
 
     return (
         
    <div className="overflow-x-auto">
+      <div className="mx-auto bg-red-300" data-aos="flip-up">
+    <div className="form-control items-center container">
+</div>
+</div>
   <table className="table table-compact w-full">
     <thead>
       <tr>
@@ -103,17 +100,12 @@ const MyToys = () => {
       toy={toy}
       handleDelete={handleDelete}
       handleUpdate={handleUpdate}
-      ></MyToy>
-      
-      )}
-     
-    </tbody> 
-   
-  </table>
+      ></MyToy>)}
 
+    </tbody> 
+  </table>
 </div>
   
-
 )
   
 };

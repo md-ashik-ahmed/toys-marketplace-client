@@ -2,17 +2,14 @@
 import { ToastContainer, toast,} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useLocation, useNavigate,} from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import app from '../../Firebase/firebase.config';
 import { AuthContext } from '../Provider/AuthProvider';
 import useTitle from '../hooks/useTitle';
 
-
-
 const Login = () => {
 
-  const [error, setError] = useState('')
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
@@ -20,7 +17,6 @@ const Login = () => {
   useTitle("login")
   const auth = getAuth(app)
   console.log(app)
-
 
   const googleProvider = new GoogleAuthProvider()
   const handleGoogleSignIn = () =>{
@@ -35,12 +31,10 @@ const Login = () => {
     })
   }
 
-
   const {signIn} = useContext(AuthContext)
 
     const handleLogin = event =>{
         event.preventDefault();
-
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -50,19 +44,17 @@ const Login = () => {
         .then(result =>{
           const loggedUser = result.user;
           console.log(loggedUser)
-          setError('')
           form.reset()
-          
           navigate(from, {replace : true});
         })
         .catch(error =>{
           console.log(error.code);
 
         if(error.message.includes("wrong-password")){
-          setError && toast.error('Wrong Password !')
+          toast.error('Wrong Password !')
         }
         else if(error.message.includes("user-not-found")){
-          setError && toast.error('Wrong Email !')
+          toast.error('Wrong Email !')
         }
         // else if(error.message.includes("email-already-in-use")){
         //   setError && toast.error('Email already used !')
@@ -82,9 +74,7 @@ const Login = () => {
       <div data-aos="flip-left"> <img src="https://i.ibb.co/j8TkHJb/app.png" alt="" /> </div>
       <div className="card flex-shrink-0 w-full max-w-sm bg-sky-200">
         
-       
-
-      <form onSubmit={handleLogin} className="card-body" data-aos="flip-right">
+      <form onSubmit={handleLogin} className="card-body" data-aos="flip-rigt">
             <div className='text-center'> <h1 className='text-4xl font-semibold py-2'>Login !</h1></div>
 
         <div className="form-control mb-6">
@@ -103,13 +93,11 @@ const Login = () => {
           <button className="btn ">Login</button>
         </div>
       <div className='flex'> <p>Dont have an account?</p> 
-      <p>{error}</p>
+
       <Link to='/register'> <p className='text-blue-600 text-xl'>Register</p> 
       </Link></div>
 
-
       <div className='text-center'><button onClick={handleGoogleSignIn} className='btn btn-outline'>SignIn with Google</button></div>
-
       </form>
     </div>
     </div>

@@ -7,36 +7,18 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 
 const MyToy = ({toy, handleDelete, handleUpdate}) => {
-
   console.log(toy)
 
  const {user} = useContext(AuthContext)
-  const {_id, seller, category, price, quantity, name, picture} = toy || []
+  const {_id, seller, category, price, quantity, name, picture, description} = toy || []
   const [showModal, setShowModal] = React.useState(false);
   
-
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  // const handleUpdate = (data) =>{
-  //   console.log(data)
-  //   fetch(`http://localhost:5000/updateToy/${data._id}`, {
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       if (result.modifiedCount > 0) {
-  //         setControl(!control);
-  //       }
-  //       console.log(result);
-  //     });
-  // }
-
+  
   return (
     <>
       <tr>
-        {/* <Link to={`/update/${_id}`}><td>Edit</td></Link> */}
         <td>
         <button onClick={() => setShowModal(true)}>
        Edit
@@ -45,141 +27,121 @@ const MyToy = ({toy, handleDelete, handleUpdate}) => {
       {showModal ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-          >
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-sky-100 outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">
-                    Modal Title
-                  </h3>
+                 <div className="text-center"> <h3 className="text-3xl font-semibold pl-20">
+                    Update My Toys
+                  </h3></div>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
-                  >
+                    onClick={() => setShowModal(false)}>
+
                     <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
                     </span>
                   </button>
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                 
-
-
-
-
-
-                <form onSubmit={handleSubmit(handleUpdate)}>
+            <form onSubmit={handleSubmit(handleUpdate)}>
             {errors.exampleRequired && <span>This field is required</span>}
            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
            <div>
+            <h1>Seller Name</h1>
            <input
               className="form-control p-2"
               {...register("seller")}
               placeholder="Seller Name"
-            
-            />
+              defaultValue={seller}/>
+              
            </div>
 
-            <div>
-            <input
-            className="text-input hidden"
-            {...register("_id")}
-            value={_id}
-          />
-            </div>
-
+            
            <div>
+           <h1>Toy Name</h1>
            <input
               className="form-control p-2"
               {...register("name")}
               placeholder="Toy Name"
               type = 'text'
-              defaultValue={name}
-
-            />
+              defaultValue={name}/>
            </div>
 
             <div>
+            <h1>Quantity</h1>
             <input
               className="form-control p-2"
               {...register("quantity", { required: true })}
               placeholder="Quantity"
-              defaultValue={quantity}
-
-              
-            />
+              defaultValue={quantity}/>
             </div>
 
-           {/* <div>
-           <input
-              className="form-control p-2"
-              {...register("rating", { required: true })}
-              placeholder="Rating"
-              type="number"
-              defaultValue={rating}
-
-            />
-           </div> */}
             <div>
-            <select className="form-control p-2" {...register("category")}>
-              <option value="Sports Car">Sports Car</option>
-              <option value="Mini Fire Truck">Mini Fire Truck</option>
-              <option value="Mini Police Truck">Mini Police Truck</option>
-            </select>
-            </div>
-           
-            <div>
+            <h1>Image link</h1>
             <input
               className="form-control p-2"
               {...register("picture")}
               placeholder="Image link"
               type="url"
+              defaultValue={picture}/>
               
-            />
             </div>
+
+            <div>
+            <h1>Price</h1>
             <input
               className="form-control p-2"
               {...register("price")}
               placeholder="Price"
               type="number"
-              defaultValue={price}
-            />
-            <div>
-            <input
-              className="form-control p-2"
-              value={user?.email}
-              {...register("email")}
-              placeholder="Your email"
-              type="email"
-            />
+              defaultValue={price}/>
             </div>
+
+           
             <div>
+            <h1>Description</h1>
             <input
               className=" p-2"
               {...register("description")}
               placeholder="Description"
               type = 'text'
-            />
+              defaultValue={description}/>
             </div>
+
+            <div>
+            <input
+              className="form-control p-2 hidden"
+              value={user?.email}
+              {...register("email")}
+              placeholder="Your email"
+              type="email"/>
+            </div>
+
+            <div>
+            <input
+            className="text-input hidden"
+            {...register("_id")}
+            value={_id}/>
+            </div>
+
+
            </div>
             <div className="text-center mt-6">
-            <input className="btn px-12 py-2 btn-outline" value="Add Toys" type="submit" />
+            <input className="btn px-12 py-2 btn-outline" value="Update Toy" type="submit" />
             </div>
           </form>
+          </div>
 
-
-                </div>
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
+           {/*footer*/}
+            <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+              <button
+               className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              type="button"
+                onClick={() => setShowModal(false)}>
                     Close
                   </button>
                 </div>
@@ -190,7 +152,6 @@ const MyToy = ({toy, handleDelete, handleUpdate}) => {
         </>
       ) : null}
     </>
-
         </td>
         <td>
          <div className="flex items-center space-x-3">
@@ -209,9 +170,7 @@ const MyToy = ({toy, handleDelete, handleUpdate}) => {
         <td><button onClick={() => handleDelete(_id)} className="btn btn-sm btn-square btn-outline">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button></td>
-        
       </tr>
-    {/* <div className=""><UpdateToy toy = {toy}></UpdateToy></div> */}
     </>
   );
 };
